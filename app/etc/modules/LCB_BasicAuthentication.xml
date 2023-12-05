@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <LCB_BasicAuthentication>
+            <active>true</active>
+            <codePool>local</codePool>
+        </LCB_BasicAuthentication>
+    </modules>
+</config>

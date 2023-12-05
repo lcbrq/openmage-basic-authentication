@@ -1,0 +1,2 @@
+app/code/local/LCB/BasicAuthentication
+app/etc/modules/LCB_BasicAuthentication.xml

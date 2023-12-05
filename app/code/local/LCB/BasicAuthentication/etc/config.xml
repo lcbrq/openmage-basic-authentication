@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <LCB_BasicAuthentication>
+            <version>0.1.0</version>
+        </LCB_BasicAuthentication>
+    </modules>
+    <global>
+        <helpers>
+            <lcb_basic_authentication>
+                <class>LCB_BasicAuthentication_Helper</class>
+            </lcb_basic_authentication>
+        </helpers>
+        <models>
+            <lcb_basic_authentication>
+                <class>LCB_BasicAuthentication_Model</class>
+            </lcb_basic_authentication>
+        </models>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <lcb_basic_authentication_controller_action_predispatch>
+                        <class>lcb_basic_authentication/observer</class>
+                        <method>checkBasicAuthentication</method>
+                    </lcb_basic_authentication_controller_action_predispatch>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </global>
+</config>
+

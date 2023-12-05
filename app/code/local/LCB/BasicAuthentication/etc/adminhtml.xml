@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <lcb_basic_authentication translate="title" module="lcb_basic_authentication">
+                                        <title>Basic Authentication</title>
+                                        <sort_order>100</sort_order>
+                                    </lcb_basic_authentication>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
