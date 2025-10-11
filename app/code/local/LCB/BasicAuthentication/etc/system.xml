@@ -57,6 +57,18 @@
                                 <enabled>1</enabled>
                             </depends>
                         </password>
+                        <ignored_actions translate="label">
+                            <label>Ignored Full Action Paths</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment>Comma Separated like cms_index_index</comment>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </ignored_actions>
                     </fields>
                 </frontend>
                 <admin translate="label"> 
