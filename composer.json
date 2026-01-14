@@ -2,7 +2,7 @@
     "name": "lcbrq/openmage-basic-authentication",
     "license": ["MIT"],
     "type": "magento-module",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Magento 1 (OpenMage) plugin for basic authentication protection",
     "keywords": ["magento", "openmage", "mahocommerce", "security"],
     "extra": {

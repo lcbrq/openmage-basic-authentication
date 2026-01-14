@@ -6,6 +6,11 @@
 class LCB_BasicAuthentication_Model_Observer
 {
     /**
+     * @var bool
+     */
+    private $_authenticationRequired  = false;
+
+    /**
      * @param  Varien_Event_Observer $observer
      * @return void
      */
@@ -17,6 +22,7 @@ class LCB_BasicAuthentication_Model_Observer
                 $basicAuthUsername = $config['username'];
                 $basicAuthPassword = Mage::getModel('core/encryption')->decrypt($config['password']);
                 if ($basicAuthPassword && $basicAuthPassword) {
+                    $this->_authenticationRequired = true;
                     list($username, $password) = Mage::helper('core/http')->authValidate();
                     if ($basicAuthUsername !== $username || $password !== $basicAuthPassword) {
                         Mage::helper('core/http')->authFailed();
@@ -44,10 +50,29 @@ class LCB_BasicAuthentication_Model_Observer
                 $basicAuthUsername = $config['username'];
                 $basicAuthPassword = Mage::getModel('core/encryption')->decrypt($config['password']);
                 if ($basicAuthPassword && $basicAuthPassword) {
+                    $this->_authenticationRequired = true;
                     list($username, $password) = Mage::helper('core/http')->authValidate();
                     if ($basicAuthUsername !== $username || $password !== $basicAuthPassword) {
                         Mage::helper('core/http')->authFailed();
                     }
+                }
+            }
+        }
+    }
+
+    /**
+     * Fix issue with Lesti Full Page Cache
+     * @param  Varien_Event_Observer $observer
+     * @return void
+     */
+    public function onFpcCollectParams(Varien_Event_Observer $observer)
+    {
+        if ($this->_authenticationRequired) {
+            if ($parameters = $observer->getParameters()) {
+                if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+                    $params = $parameters->getValue();
+                    $params['authorization'] = $_SERVER['HTTP_AUTHORIZATION'];
+                    $parameters->setValue($params);
                 }
             }
         }
